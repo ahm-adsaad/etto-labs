@@ -1,0 +1,266 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  /* Signal blue — accent ONLY */
+  --color-blue-50: #f2f9fc;
+  --color-blue-100: #e1f0f8;
+  --color-blue-200: #c6e4f2;
+  --color-blue-300: #a9d6eb;
+  --color-blue-400: #7cbedd;
+  --color-blue-600: #2e86b2;
+  --color-blue-700: #1d5f80;
+  --color-blue-800: #143f55;
+
+  --color-ink: #0d1216;
+
+  --color-g-50: #f5f7f8;
+  --color-g-100: #ebeef0;
+  --color-g-200: #dce0e3;
+  --color-g-300: #c3c9ce;
+  --color-g-400: #9aa2a9;
+  --color-g-500: #5f686f;
+  --color-g-600: #454d53;
+  --color-g-700: #2e353a;
+  --color-white: #ffffff;
+
+  --radius: 3px;
+  --radius-lg: 6px;
+
+  --font-display:
+    var(--font-archivo), var(--font-archivo-secondary), "Helvetica Neue", Arial,
+    sans-serif;
+  --font-body: var(--font-ibm-plex-sans), "Segoe UI", Arial, sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), monospace;
+  --font-arabic: var(--font-ibm-plex-sans-arabic), sans-serif;
+
+  --ease-out-refined: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* shadcn CSS variable mirror */
+:root {
+  --background: #ffffff;
+  --foreground: #0d1216;
+  --card: #ffffff;
+  --card-foreground: #0d1216;
+  --popover: #ffffff;
+  --popover-foreground: #0d1216;
+  --primary: #0d1216;
+  --primary-foreground: #ffffff;
+  --secondary: #f5f7f8;
+  --secondary-foreground: #0d1216;
+  --muted: #f5f7f8;
+  --muted-foreground: #5f686f;
+  --accent: #f2f9fc;
+  --accent-foreground: #0d1216;
+  --destructive: #b91c1c;
+  --border: #dce0e3;
+  --input: #dce0e3;
+  --ring: #2e86b2;
+  --radius: 3px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-g-200);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background: var(--color-white);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  [dir="rtl"] body {
+    font-family: var(--font-arabic), var(--font-body);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-blue-600);
+    outline-offset: 2px;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  [role="button"]:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid var(--color-blue-600);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .calrule {
+    height: 13px;
+    border-top: 1px solid var(--color-g-300);
+    position: relative;
+    background-image:
+      repeating-linear-gradient(
+        to right,
+        var(--color-g-300) 0 1px,
+        transparent 1px 14px
+      ),
+      repeating-linear-gradient(
+        to right,
+        var(--color-ink) 0 1px,
+        transparent 1px 70px
+      );
+    background-size:
+      100% 5px,
+      100% 11px;
+    background-repeat: repeat-x;
+  }
+
+  .type-hero {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(40px, 7vw, 84px);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+    color: var(--color-ink);
+  }
+
+  .type-h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(26px, 3.6vw, 40px);
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    color: var(--color-ink);
+  }
+
+  .type-h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+  }
+
+  .type-lede {
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--color-g-600);
+    max-width: 60ch;
+  }
+
+  .type-mono-data {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .container-etto {
+    width: 100%;
+    max-width: 1120px;
+    margin-inline: auto;
+    padding-inline: 24px;
+  }
+
+  @media (min-width: 768px) {
+    .container-etto {
+      padding-inline: 40px;
+    }
+  }
+
+  .section-pad {
+    padding-block: 72px;
+  }
+
+  @media (min-width: 768px) {
+    .section-pad {
+      padding-block: 96px;
+    }
+  }
+
+  .link-underline {
+    text-decoration: none;
+    background-image: linear-gradient(
+      transparent calc(100% - 1px),
+      var(--color-blue-600) calc(100% - 1px)
+    );
+    background-size: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.15s ease;
+  }
+
+  .link-underline:hover {
+    background-size: 100% 100%;
+  }
+
+  .content-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 320px;
+  }
+
+  /* View-timeline scroll reveal when supported; no-op elsewhere. */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .reveal-view {
+        animation: reveal-view 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 40%;
+      }
+    }
+  }
+}
+
+@keyframes reveal-view {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none !important;
+  }
+
+  .reveal-view {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

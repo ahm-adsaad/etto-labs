@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-label="Etto Labs">
+  <rect width="160" height="160" rx="34" fill="#0D1216"/>
+  <g transform="translate(-62.9 20.3) scale(0.812)" fill="none" stroke="#A9D6EB" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M145,14 L145,133"/>
+    <path d="M205,14 L205,111 A22,22 0 0,0 227,133"/>
+    <path d="M125,47 L225,47"/>
+  </g>
+</svg>
